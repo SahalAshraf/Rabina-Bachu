@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Happy Birthday!</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@700;800&family=Plus+Jakarta+Sans:wght@400;500&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        background: '#FFFDF5',
+                        foreground: '#1E293B',
+                        accent: '#8B5CF6',
+                        secondary: '#F472B6',
+                        tertiary: '#FBBF24',
+                        quaternary: '#34D399',
+                    },
+                    fontFamily: {
+                        heading: ['Outfit', 'sans-serif'],
+                        body: ['Plus Jakarta Sans', 'sans-serif'],
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        body { font-family: 'Plus Jakarta Sans', sans-serif; background-color: #FFFDF5; }
+        h1, h2 { font-family: 'Outfit', sans-serif; }
+        .hard-shadow { box-shadow: 4px 4px 0px 0px #1E293B; }
+        .sticker-card { border: 2px solid #1E293B; transition: transform 0.3s cubic-bezier(0.34,1.56,0.64,1); }
+        .sticker-card:hover { transform: rotate(-1deg) scale(1.02); }
+        
+        @keyframes pulse-dot { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.5); } }
+        .dot-animation { animation: pulse-dot 1.2s infinite ease-in-out; }
+    </style>
+</head>
+<body class="text-foreground">
+
+    <div id="loader" class="fixed inset-0 z-50 bg-[#FFFDF5] flex items-center justify-center transition-opacity duration-500">
+        <div class="flex gap-4">
+            <div class="w-5 h-5 rounded-full bg-secondary dot-animation" style="animation-delay: 0s;"></div>
+            <div class="w-5 h-5 rounded-full bg-secondary dot-animation" style="animation-delay: 0.2s;"></div>
+            <div class="w-5 h-5 rounded-full bg-secondary dot-animation" style="animation-delay: 0.4s;"></div>
+        </div>
+    </div>
+
+    <!-- Hero Section -->
+    <main class="max-w-6xl mx-auto px-6 py-24 flex flex-col md:flex-row items-center gap-12">
+        <div class="flex-1 space-y-6">
+            <h1 class="text-6xl md:text-8xl font-extrabold tracking-tight">Happy<br><span class="text-secondary">Birthday Rabina!</span></h1>
+            <p class="text-xl text-slate-600 max-w-lg">
+                To my <span class="font-bold text-accent">K-A-M-I-N-I</span> of 3+ years! Wishing the most sweet and innocent ( uhmm ) person a year filled with health, wealth and all the happiness you deserve! 
+                Happy 22nd Birthday! I love you my betuuuuu. Let's make this day unforgettable.
+            </p>
+            <button onclick="showModal()" class="bg-accent text-white font-bold py-4 px-8 rounded-full hard-shadow hover:translate-x-[-2px] hover:translate-y-[-2px] transition-all">
+                Send a Hug!
+            </button>
+        </div>
+
+        <div class="flex-1 relative">
+            <img src="https://res.cloudinary.com/dyioqs3cj/image/upload/v1782272015/motu_1_hmdjfj.jpg" 
+                 alt="Rabina" 
+                 class="w-full h-auto rounded-tr-3xl rounded-bl-3xl border-4 border-foreground hard-shadow">
+        </div>
+    </main>
+
+    <section class="max-w-6xl mx-auto px-6 py-24 grid md:grid-cols-3 gap-8">
+        <!-- Gundi Card -->
+        <div class="sticker-card p-4 bg-white rounded-xl shadow-[8px_8px_0px_#F472B6]">
+            <img src="https://res.cloudinary.com/dyioqs3cj/image/upload/v1782272015/motu_k4y5zd.jpg" alt="Official Gundi" class="w-full h-64 object-cover rounded-lg mb-6 border-2 border-foreground">
+            <h3 class="text-2xl font-bold mb-2">Official Gundi</h3>
+            <p class="text-slate-600">The legendary official Gundi of our Bahi group!</p>
+        </div>
+        
+        <!-- Madam Card -->
+        <div class="sticker-card p-4 bg-white rounded-xl shadow-[8px_8px_0px_#8B5CF6]">
+            <img src="https://res.cloudinary.com/dyioqs3cj/image/upload/v1782272015/motu_3_mpkbl1.jpg" alt="Madam Jiiii" class="w-full h-64 object-cover rounded-lg mb-6 border-2 border-foreground">
+            <h3 class="text-2xl font-bold mb-2">Madam Jiiii</h3>
+            <p class="text-slate-600">The one and only, our very own Madam Jiiii.</p>
+        </div>
+
+        <!-- Innocent Card -->
+        <div class="sticker-card p-4 bg-white rounded-xl shadow-[8px_8px_0px_#34D399]">
+            <img src="https://res.cloudinary.com/dyioqs3cj/image/upload/v1782272015/motu_4_hc91gn.jpg" alt="Innocent" class="w-full h-64 object-cover rounded-lg mb-6 border-2 border-foreground">
+            <h3 class="text-2xl font-bold mb-2">Innocent ( uhmm )</h3>
+            <p class="text-slate-600">Such a sweet and innocent ( uhmm ) person!</p>
+        </div>
+    </section>
+
+    <div id="messageModal" class="fixed inset-0 z-[60] flex items-center justify-center bg-foreground/20 backdrop-blur-sm hidden opacity-0 transition-opacity duration-300">
+        <div class="bg-white p-8 rounded-2xl border-4 border-foreground hard-shadow max-w-sm text-center">
+            <h2 class="text-2xl font-bold mb-4">Message</h2>
+            <p class="text-lg mb-6">Astagfirullah I'm Muslim</p>
+            <button onclick="hideModal()" class="bg-secondary text-white font-bold py-2 px-6 rounded-full hard-shadow border-2 border-foreground hover:bg-pink-400">Close</button>
+        </div>
+    </div>
+
+    <script>
+        function showModal() {
+            const modal = document.getElementById('messageModal');
+            modal.classList.remove('hidden');
+            setTimeout(() => modal.classList.remove('opacity-0'), 10);
+        }
+        
+        function hideModal() {
+            const modal = document.getElementById('messageModal');
+            modal.classList.add('opacity-0');
+            setTimeout(() => modal.classList.add('hidden'), 300);
+        }
+
+        lucide.createIcons();
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                const loader = document.getElementById('loader');
+                loader.style.opacity = '0';
+                setTimeout(() => loader.remove(), 500);
+            }, 2000);
+        });
+    </script>
+</body>
+</html>
